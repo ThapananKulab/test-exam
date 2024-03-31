@@ -1,18 +1,24 @@
-import "./App.css";
-import MyForm from "./test";
-import MyBootstrapForm from "./test2";
-import NumberForm from "./test3";
+import React from "react";
+import { userContext } from "./context";
+import Header from "./context-header";
+import Content from "./context-content";
+import Header2 from "./context-header2";
+import Content2 from "./context-content2";
 
-function App() {
+export default function App() {
+  let [user, setUser] = React.useState();
   return (
     <>
-      <MyForm />
+      <userContext.Provider value={"Tom Jerry"}>
+        <Header />
+        <Content />
+      </userContext.Provider>
+      <br />
 
-      <MyBootstrapForm />
-
-      <NumberForm />
+      <userContext.Provider value={[user, setUser]}>
+        <Header2 />
+        <Content2 />
+      </userContext.Provider>
     </>
   );
 }
-
-export default App;
